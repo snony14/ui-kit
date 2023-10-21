@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ThemeProvider } from "@emotion/react";
+import { Button, Stack, Typography } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+
+import "./App.css";
+import { theme } from "./theme/theme";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <Typography component="h1">Buttons</Typography>
+        <Stack direction="row" gap={1}>
+          <Button variant="text" color="primary">
+            text default
+          </Button>
+          <Button variant="outlined" color="salmon">
+            Outline
+          </Button>
+          <Button variant="contained" color="salmon">
+            Contained
+          </Button>
+        </Stack>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
